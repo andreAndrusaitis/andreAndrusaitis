@@ -1,0 +1,41 @@
+name: capa
+
+on:
+  schedule:
+    - cron: "15 6 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["gerar/**", ".github/workflows/capa.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  capa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow numpy
+      - run: node gerar/gerar.js /tmp/quadros
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LOGIN: ${{ github.repository_owner }}
+      - run: python gerar/gif.py /tmp/quadros /tmp/capa
+      # O ramo "capa" guarda só a última versão, para o repositório não crescer.
+      - run: |
+          cd /tmp/capa
+          git init -q -b capa
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Atualiza a capa"
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" capa
+        env:
+          GH_TOKEN: ${{ github.token }}
