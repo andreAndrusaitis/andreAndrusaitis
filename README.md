@@ -22,6 +22,7 @@ Desenvolvo aplicações web com TypeScript e Python, do banco de dados à interf
 |:---:|---|---|---|
 | <img src="img/barco-pixelforge.svg" alt=""> | [**pixelforge**](https://github.com/andreAndrusaitis/pixelforge) | Pixel art gerada por código, de PNG a GIF animado | Python |
 | <img src="img/barco-predict.svg" alt=""> | [**predict**](https://github.com/andreAndrusaitis/predict) | Simulação de cenários com populações sintéticas | TypeScript, Python |
+| <img src="img/barco-isa.svg" alt=""> | [**isa**](https://github.com/andreAndrusaitis/isa) | Service desk, projetos e documentos em um só lugar | TypeScript |
 | <img src="img/barco-tormenta20.svg" alt=""> | [**tormenta20**](vitrine/tormenta20/README.md) | Fichas, combate e ferramentas de mestre | TypeScript |
 | <img src="img/barco-avatar-legends.svg" alt=""> | [**avatar-legends**](vitrine/avatar-legends/README.md) | Mesa virtual de RPG com sessão ao vivo | TypeScript |
 
